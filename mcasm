@@ -412,6 +412,9 @@ class MicrocodeAssembler(object):
                     self.error('No conditions specified')
                 uinstr = self.idleinstr()
                 uaddr = 0
+                for spec in self.condspecs:
+                    if (spec[0] == 'uaddr'):
+                        uaddr = int(spec[1], 2) # parse binary uaddr as start uaddr
                 state = 1
                 if self.options.verbose:
                     print
